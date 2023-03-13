@@ -198,6 +198,8 @@ namespace FIConsole
 
             DriverList.Sort(comparer);
 
+            Overtake();
+
         }
 
 
@@ -206,7 +208,35 @@ namespace FIConsole
         /// </summary>
         public void Overtake() 
         {
-            
+            DriverList[0].ResultInCurrentRace = DriverOutcome.First;
+
+            bool isUnique = false;
+
+            while (!isUnique)
+            {
+                for (int i = 1; i < 19; i++)
+                {
+                    if (DriverList[i].ResultInCurrentRace == DriverList[i + 1].ResultInCurrentRace)
+                    {
+
+                        int driverToPromote = random.Next(i, i + 2);
+
+                        DriverList[driverToPromote].ResultInCurrentRace = DriverList[driverToPromote].ResultInCurrentRace - 1;
+
+                        DriverComparerByPlace comparer = new DriverComparerByPlace();
+
+                        DriverList.Sort(comparer);
+
+                    }
+                }
+
+                List<DriverOutcome> currentPlaces = DriverList.Select(d => d.ResultInCurrentRace).ToList();
+
+                int uniques = currentPlaces.Distinct().Count();
+
+                isUnique = currentPlaces.Distinct().Count() == currentPlaces.Count();
+            }
+
         }
 
         /// <summary>
