@@ -41,15 +41,24 @@ namespace FIConsole
         /// <returns>The <c>DriverOutcome</c> representing the driver's finishing place.</returns>
         public DriverOutcome CalculatePossiblePlace(Race race)
         {
-            float weatherModifierPrecipitation = (race.RaceWeather.IsRaining) ? RainModifier : DryModifier;
 
-            float weatherModifierTemperature = (race.RaceWeather.IsHot) ? HeatModifier : ColdModifier;
+            List<float> miniJokerModifiers = CalculateMiniJoker();
 
-            float weatherModifierWind =(race.RaceWeather.IsWindy) ? WindModifier : CalmModifier;
+            float weatherModifierPrecipitation = (race.RaceWeather.IsRaining) ? RainModifier + miniJokerModifiers[0] : DryModifier + miniJokerModifiers[0];
 
-            float finalScore = (10.0f * WinProbability) + (8.0f * SecondToTenthProbability) + (-2.0f * DnfProbability) + (2.5f * weatherModifierPrecipitation) + (1.0f * weatherModifierTemperature) + (0.3f * weatherModifierWind);
+            float weatherModifierTemperature = (race.RaceWeather.IsHot) ? HeatModifier + miniJokerModifiers[1]  : ColdModifier + miniJokerModifiers[1];
 
-            int possiblePlace = 21 - (int)finalScore;
+            float weatherModifierWind = (race.RaceWeather.IsWindy) ? WindModifier + miniJokerModifiers[2]  : CalmModifier + miniJokerModifiers[2];
+
+            float finalWinProbability = WinProbability + miniJokerModifiers[3];
+
+            float finalSecondToTenthProbability = WinProbability + miniJokerModifiers[4];
+
+            float finalDnfProbability = DnfProbability + miniJokerModifiers[5];
+
+            float finalScore = (9.2f * WinProbability) + (8.0f * SecondToTenthProbability) + (-2.0f * DnfProbability) + (4.5f * weatherModifierPrecipitation) + (1.0f * weatherModifierTemperature) + (0.5f * weatherModifierWind);
+
+            int possiblePlace = 20 - (int)finalScore;
 
             return (DriverOutcome)possiblePlace;
         }
@@ -62,9 +71,27 @@ namespace FIConsole
         {
             float finalScore = (10.0f * (float)GameController.random.NextDouble()) + (8.0f * (float)GameController.random.NextDouble()) + (-2.0f * (float)GameController.random.NextDouble()) + (2.5f * (float)GameController.random.NextDouble()) + (1.0f * (float)GameController.random.NextDouble()) + (0.3f * (float)GameController.random.NextDouble());
 
-            int possiblePlace = 21 - (int)finalScore;
+            int possiblePlace = 20 - (int)finalScore;
 
             return (DriverOutcome)possiblePlace;
+        }
+
+        /// <summary>
+        /// Calculates some small probability that a driver is going to be a bit 'off' or 'on point' during a race.
+        /// </summary>
+        /// <returns></returns>
+        public List<float> CalculateMiniJoker()
+        {
+            List<float> miniJokerModifiers = new List<float>();
+
+            while (miniJokerModifiers.Count < 7)
+            {
+                float modifierToAdd = (GameController.random.Next(2) == 0) ? 0.1f : -0.1f;
+                
+                miniJokerModifiers.Add(modifierToAdd);
+            }
+
+            return miniJokerModifiers;
         }
 
 

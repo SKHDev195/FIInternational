@@ -40,7 +40,7 @@ namespace FIConsole
         public List<Driver> DriverList = new List<Driver>()
         {
             new Driver("Maximum Dutch", 0.9f, 0.9f,  0.2f, 0.6f, 0.8f, 0.7f, 0.9f, 0.7f, 0.8f),
-            new Driver("Antonio Bestteammate", 0.6f, 0.7f, 0.3f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
+            new Driver("Antonio Bestteammate", 0.7f, 0.7f, 0.3f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
             new Driver("Monegasque Jemapelle", 0.8f, 0.9f, 0.4f, 0.7f, 0.7f, 0.4f, 0.8f, 0.6f, 0.8f),
             new Driver("Sancho Junior", 0.7f, 0.8f, 0.5f, 0.6f, 0.8f, 0.8f, 0.7f, 0.9f, 0.7f),
             new Driver("Sir Winalotton", 0.9f, 0.8f, 0.3f, 0.9f, 0.8f, 0.6f, 0.7f, 0.7f, 0.7f),
@@ -57,8 +57,8 @@ namespace FIConsole
             new Driver("Rico Greenberg", 0.4f, 0.5f, 0.5f, 0.7f, 0.6f, 0.7f, 0.6f, 0.6f, 0.6f),
             new Driver("Rin Takeuchi", 0.3f, 0.3f, 0.5f, 0.6f, 0.6f, 0.6f, 0.7f, 0.5f, 0.5f),
             new Driver("Jack du Pint", 0.3f, 0.3f, 0.4f, 0.6f, 0.6f, 0.7f, 0.6f, 0.6f, 0.5f),
-            new Driver("Jackson Captainwell", 0.1f, 0.2f, 0.6f, 0.5f, 0.5f, 0.6f, 0.5f, 0.5f, 0.6f),
-            new Driver("Damon Goataon", 0.1f, 0.3f, 0.6f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
+            new Driver("Jackson Captainwell", 0.15f, 0.2f, 0.6f, 0.5f, 0.5f, 0.6f, 0.5f, 0.5f, 0.6f),
+            new Driver("Damon Goataon", 0.15f, 0.3f, 0.6f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
 
         };
 
@@ -145,24 +145,24 @@ namespace FIConsole
         /// <param name="race">The race for which joker drivers are identified.</param>
         public List<int> IdentifyJokerDrivers(Race race)
         {
-            int numberOfJokerDrivers = 1;
+            int numberOfJokerDrivers = 2;
 
             switch (race.ChanceOfJoker)
             {
                 case 0:
-                    numberOfJokerDrivers = 2;
-                    break;
-
-                case 1:
                     numberOfJokerDrivers = 3;
                     break;
 
-                case 2:
+                case 1:
                     numberOfJokerDrivers = 4;
                     break;
 
-                case 3:
+                case 2:
                     numberOfJokerDrivers = 5;
+                    break;
+
+                case 3:
+                    numberOfJokerDrivers = 6;
                     break;
             }
 
@@ -170,12 +170,16 @@ namespace FIConsole
 
             while (driverIndices.Count <= numberOfJokerDrivers)
             {
-                driverIndices.Add(random.Next(21 - driverIndices.Count));
+                driverIndices.Add(random.Next(20 - driverIndices.Count));
             }
 
             return driverIndices;
         }
 
+        /// <summary>
+        /// Runs a race by assigning each participating driver a finishing place.
+        /// </summary>
+        /// <param name="race">The race to run.</param>
         public void RunRace(Race race)
         {
             List<int> jokerDriverIndices = IdentifyJokerDrivers(race);
@@ -190,6 +194,19 @@ namespace FIConsole
 
         }
 
+
+        /// <summary>
+        /// Resolves cases in which one more drivers have been assigned the same finishing place.
+        /// </summary>
+        public void Overtake() 
+        {
+
+        }
+
+        /// <summary>
+        /// Generates a string outlining the basic results of the current race.
+        /// </summary>
+        /// <returns></returns>
         public string GenerateStatus()
         {
             List<string> finishReports = new List<string>();

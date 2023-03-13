@@ -14,7 +14,7 @@ namespace FIConsole
         Fourth,
         Fifth,
         Sixth,
-        Sevent,
+        Seventh,
         Eighth,
         Ninth,
         Tenth,

@@ -23,15 +23,15 @@ namespace FIConsole
 
             switch (chance)
             {
-                case int cs when cs <= 70:
+                case int cs when cs <= 60:
                     ChanceOfJoker = 0;
                     break;
 
-                case int cs when (cs > 70 && cs <= 90):
+                case int cs when (cs > 60 && cs <= 80):
                     ChanceOfJoker = 1;
                     break;
 
-                case int cs when (cs > 90 && cs <= 98):
+                case int cs when (cs > 80 && cs <= 95):
                     ChanceOfJoker = 2;
                     break;
 

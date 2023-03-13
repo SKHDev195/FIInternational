@@ -10,6 +10,8 @@ class Program
 
         gameController.GenerateRaces();
 
+        Console.WriteLine($"The current race is {gameController.RaceList[0].RaceTrack.Name}");
+
         gameController.RunRace(gameController.RaceList[0]);
 
         Console.WriteLine(gameController.GenerateStatus());
