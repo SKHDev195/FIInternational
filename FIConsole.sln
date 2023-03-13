@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIConsole", "FIConsole.csproj", "{89B800AD-9829-4A1B-A1F5-8EE45766F843}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89B800AD-9829-4A1B-A1F5-8EE45766F843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B800AD-9829-4A1B-A1F5-8EE45766F843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B800AD-9829-4A1B-A1F5-8EE45766F843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B800AD-9829-4A1B-A1F5-8EE45766F843}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABF27BE7-07B2-4641-94CD-06DA8B0AD327}
+	EndGlobalSection
+EndGlobal
