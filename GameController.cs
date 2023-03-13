@@ -62,6 +62,8 @@ namespace FIConsole
 
         };
 
+        public List<Driver> SortedDriversList { get; private set; }
+
         public List<Team> TeamsList { get; private set; }
 
         public List<Race> RaceList { get; private set; }
@@ -192,6 +194,10 @@ namespace FIConsole
 
             }
 
+            DriverComparerByPlace comparer = new DriverComparerByPlace();
+
+            DriverList.Sort(comparer);
+
         }
 
 
@@ -200,7 +206,7 @@ namespace FIConsole
         /// </summary>
         public void Overtake() 
         {
-
+            
         }
 
         /// <summary>

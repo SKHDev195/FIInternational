@@ -61,6 +61,7 @@ namespace FIConsole
             int possiblePlace = 20 - (int)finalScore;
 
             return (DriverOutcome)possiblePlace;
+
         }
 
         /// <summary>
@@ -93,7 +94,6 @@ namespace FIConsole
 
             return miniJokerModifiers;
         }
-
 
         public Driver(string name, float winProbability, float secondToTenthProbability, float dnfProbability, float rainModifier, float dryModifier, float windModifier, float calmModifier, float heatModifier, float coldModifier)
         {
