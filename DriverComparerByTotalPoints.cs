@@ -6,22 +6,25 @@ using System.Threading.Tasks;
 
 namespace FIConsole
 {
-    internal class DriverComparerByPoints
+    internal class DriverComparerByTotalPoints : IComparer<Driver>
     {
+
         /// <summary>
-        /// Compares two drivers based on their current championship points.
+        /// Compares two drivers based on their total championship points.
         /// </summary>
         /// <param name="driverOne">The first driver to compare.</param>
         /// <param name="driverTwo">The second driver to compare.</param>
         /// <returns>The result of the comparison of the two drivers.</returns>
         public int Compare(Driver driverOne, Driver driverTwo)
         {
-            if (driverOne.CurrentPoints == driverTwo.CurrentPoints) return 0;
+            if (driverOne.TotalPoints == driverTwo.TotalPoints) return 0;
 
-            else if (driverOne.CurrentPoints < driverTwo.CurrentPoints) return -1;
+            else if (driverOne.TotalPoints < driverTwo.TotalPoints) return 1;
 
-            else return 1;
+            else return -1;
         }
 
     }
+
 }
+

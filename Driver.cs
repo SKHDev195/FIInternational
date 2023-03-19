@@ -36,6 +36,8 @@ namespace FIConsole
 
         internal int CurrentPoints { get; set; } = 0;
 
+        internal int TotalPoints { get; set; } = 0;
+
         /// <summary>
         /// Calculates the possible finishing place of the driver in a given race.
         /// </summary>

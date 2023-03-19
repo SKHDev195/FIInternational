@@ -39,8 +39,8 @@ namespace FIConsole
 
         public List<Driver> DriverList = new List<Driver>()
         {
-            new Driver("Maximum Dutch", 0.9f, 0.9f,  0.03f, 0.6f, 0.8f, 0.7f, 0.9f, 0.7f, 0.8f),
-            new Driver("Antonio Bestteammate", 0.7f, 0.04f, 0.3f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
+            new Driver("Maximum Dutch", 0.83f, 0.85f,  0.03f, 0.6f, 0.8f, 0.7f, 0.9f, 0.7f, 0.8f),
+            new Driver("Antonio Bestteammate", 0.7f, 0.76f, 0.04f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
             new Driver("Monegasque Jemapelle", 0.8f, 0.9f, 0.05f, 0.7f, 0.7f, 0.4f, 0.8f, 0.6f, 0.8f),
             new Driver("Sancho Junior", 0.7f, 0.8f, 0.06f, 0.6f, 0.8f, 0.8f, 0.7f, 0.9f, 0.7f),
             new Driver("Sir Winalotton", 0.9f, 0.8f, 0.03f, 0.9f, 0.8f, 0.6f, 0.7f, 0.7f, 0.7f),
@@ -77,15 +77,13 @@ namespace FIConsole
  
         };
 
-        public List<Driver> SortedDriversList { get; private set; }
+        public List<Team> TeamsList;
 
-        public List<Team> TeamsList { get; private set; }
+    public List<Race> RaceList { get; private set; }
 
-        public List<Race> RaceList { get; private set; }
-
-        /// <summary>
-        /// Generates a list of teams with pre-defined drivers.
-        /// </summary>
+        // <summary>
+        // Generates a list of teams with pre-defined drivers.
+        // </summary>
         public void GenerateTeams()
         {
             TeamsList = new List<Team>()
@@ -102,6 +100,8 @@ namespace FIConsole
                 new Team("Frillians", DriverList[18], DriverList[19])
             };
         }
+
+
 
         /// <summary>
         /// Generates a list of races for pre-defined tracks; weather is random.
@@ -229,7 +229,7 @@ namespace FIConsole
             {
                 if (i == 0) Console.WriteLine("This is the start of a new Formula International championship!");
 
-                Console.WriteLine($"The current race is the {RaceList[i].RaceTrack.TrackCountry} GP! It is held at {RaceList[i].RaceTrack.Name}.");
+                Console.WriteLine($"Race number {(i + 1).ToString()}! The current race is the {RaceList[i].RaceTrack.TrackCountry} GP! It is held at {RaceList[i].RaceTrack.Name}.");
 
                 Console.WriteLine("Do you want to run this race? Type Y or y.");
 
@@ -248,9 +248,44 @@ namespace FIConsole
 
                     RunRace(RaceList[i]);
 
+                    Console.WriteLine("Here are the full race results:");
+
                     Console.WriteLine(GenerateStatus());
 
                     Console.WriteLine(Environment.NewLine);
+
+                    Console.WriteLine("Here is how many points each driver has earned:");
+
+                    Console.WriteLine(GenerateCurrentPointsStatusDrivers());
+
+                    Console.WriteLine(Environment.NewLine);
+
+                    Console.WriteLine("Here is how how many points each driver has in total:");
+
+                    Console.WriteLine(GenerateChampionshipStatusDrivers());
+
+                    Console.WriteLine(Environment.NewLine);
+
+                    Console.WriteLine("Do you want to see the same statistics for teams? Y / N");
+
+                    char teamInput = Console.ReadKey().KeyChar;
+
+                    if (teamInput == 'Y' || input == 'y')
+                    {
+                        Console.WriteLine(Environment.NewLine);
+
+                        Console.WriteLine("Here is how many points each team has earned:");
+
+                        Console.WriteLine(GenerateCurrentPointsStatusTeams());
+
+                        Console.WriteLine(Environment.NewLine);
+
+                        Console.WriteLine("Here is how how many points each team has in total:");
+
+                        Console.WriteLine(GenerateTotalPointsStatusTeams());
+
+                        Console.WriteLine(Environment.NewLine);
+                    }
                 }
 
             }
@@ -279,19 +314,23 @@ namespace FIConsole
         {
             foreach (Driver driver in DriverList)
             {
-                if (Points.ContainsKey(driver.ResultInCurrentRace)) driver.CurrentPoints += Points[driver.ResultInCurrentRace];
+                if (Points.ContainsKey(driver.ResultInCurrentRace)) driver.CurrentPoints = Points[driver.ResultInCurrentRace];
+
+                driver.TotalPoints += driver.CurrentPoints;
             }
 
             foreach (Team team in TeamsList)
             {
                 team.CurrentPoints = team.RacingDrivers[0].CurrentPoints + team.RacingDrivers[1].CurrentPoints;
+
+                team.TotalPoints += team.CurrentPoints;
             }
         }
 
         /// <summary>
         /// Generates a string outlining the basic results of the current race.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string with a summary of the race results.</returns>
         public string GenerateStatus()
         {
             List<string> finishReports = new List<string>();
@@ -306,9 +345,84 @@ namespace FIConsole
             return string.Join(Environment.NewLine, finishReports);
         }
 
-        public string GenerateChampionshipStatus()
+        /// <summary>
+        /// Generates a string outlining how much points each driver has earned in the current race.
+        /// </summary>
+        /// <returns>A string containing all drivers sorted by their current points.</returns>
+        public string GenerateCurrentPointsStatusDrivers()
         {
-            throw new NotImplementedException();
+            List<string> currentPoints = new List<string>();
+
+            DriverComparerByCurrentPoints comparer = new DriverComparerByCurrentPoints();
+
+            DriverList.Sort(comparer);
+
+            foreach (Driver driver in DriverList)
+            {
+                currentPoints.Add($"{driver.Name} has earned {driver.CurrentPoints.ToString()} points!");
+            }
+
+            return string.Join(Environment.NewLine, currentPoints);
+        }
+
+        /// <summary>
+        /// Generates a string outlining how much points each driver has earned in the current championship.
+        /// </summary>
+        /// <returns>A string containing all drivers sorted by their total points.</returns>
+        public string GenerateChampionshipStatusDrivers()
+        {
+            List<string> totalPoints = new List<string>();
+
+            DriverComparerByTotalPoints comparer = new DriverComparerByTotalPoints();
+
+            DriverList.Sort(comparer);
+
+            foreach (Driver driver in DriverList)
+            {
+                totalPoints.Add($"{driver.Name} has {driver.TotalPoints.ToString()} points in total!");
+            }
+
+            return string.Join(Environment.NewLine, totalPoints);
+        }
+
+        /// <summary>
+        /// Generates a string outlining how much points each team has earned in the current race.
+        /// </summary>
+        /// <returns>A string containing all teams sorted by their current points.</returns>
+        public string GenerateCurrentPointsStatusTeams()
+        {
+            List<string> currentPoints = new List<string>();
+
+            TeamComparerByCurrentPoints comparer = new TeamComparerByCurrentPoints();
+
+            TeamsList.Sort(comparer);
+
+            foreach (Team team in TeamsList)
+            {
+                currentPoints.Add($"{team.Name} has earned {team.CurrentPoints.ToString()} points!");
+            }
+
+            return string.Join(Environment.NewLine, currentPoints);
+        }
+
+        /// <summary>
+        /// Generates a string outlining how much points each team has earned in total.
+        /// </summary>
+        /// <returns>A string containing all teams sorted by their total points.</returns>
+        public string GenerateTotalPointsStatusTeams()
+        {
+            List<string> totalPoints = new List<string>();
+
+            TeamComparerByTotalPoints comparer = new TeamComparerByTotalPoints();
+
+            TeamsList.Sort(comparer);
+
+            foreach (Team team in TeamsList)
+            {
+                totalPoints.Add($"{team.Name} has {team.TotalPoints.ToString()} points in total.");
+            }
+
+            return string.Join(Environment.NewLine, totalPoints);
         }
 
     }

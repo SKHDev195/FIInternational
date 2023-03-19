@@ -11,11 +11,13 @@ namespace FIConsole
 
         public string Name { get; private set; }
 
-        public List<Driver> RacingDrivers { get; private set; }
+        public List<Driver> RacingDrivers { get; set; }
 
-        public float WinProbabilityTeam { get; private set; }
+        public float WinProbabilityTeam { get; set; }
 
         public int CurrentPoints { get; set; } = 0;
+
+        public int TotalPoints { get; set; } = 0;
 
         public Team(string name, Driver driverOne, Driver driverTwo)
         {
@@ -29,5 +31,7 @@ namespace FIConsole
 
             WinProbabilityTeam = 1 - ((1 - RacingDrivers[0].WinProbability) * (1 - RacingDrivers[1].WinProbability));
         }
+
+
     }
 }
