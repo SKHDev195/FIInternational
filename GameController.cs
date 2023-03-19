@@ -39,27 +39,42 @@ namespace FIConsole
 
         public List<Driver> DriverList = new List<Driver>()
         {
-            new Driver("Maximum Dutch", 0.9f, 0.9f,  0.2f, 0.6f, 0.8f, 0.7f, 0.9f, 0.7f, 0.8f),
-            new Driver("Antonio Bestteammate", 0.7f, 0.7f, 0.3f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
-            new Driver("Monegasque Jemapelle", 0.8f, 0.9f, 0.4f, 0.7f, 0.7f, 0.4f, 0.8f, 0.6f, 0.8f),
-            new Driver("Sancho Junior", 0.7f, 0.8f, 0.5f, 0.6f, 0.8f, 0.8f, 0.7f, 0.9f, 0.7f),
-            new Driver("Sir Winalotton", 0.9f, 0.8f, 0.3f, 0.9f, 0.8f, 0.6f, 0.7f, 0.7f, 0.7f),
-            new Driver("Philipp S. Crowe", 0.6f, 0.8f, 0.4f, 0.7f, 0.7f, 0.8f, 0.7f, 0.6f, 0.9f),
-            new Driver("Jacque Instagrammue", 0.7f, 0.7f, 0.3f, 0.8f, 0.7f, 0.8f, 0.7f, 0.8f, 0.7f),
-            new Driver("Andre Papiermache", 0.5f, 0.7f, 0.5f, 0.6f, 0.7f, 0.8f, 0.7f, 0.7f, 0.7f),
-            new Driver("Jack Streamer", 0.68f, 0.7f, 0.3f, 0.7f, 0.7f, 0.8f, 0.8f, 0.7f, 0.9f),
-            new Driver("Bafta Pastani", 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f),
-            new Driver("Zhen Ryuki", 0.4f, 0.5f, 0.4f, 0.7f, 0.8f, 0.7f, 0.9f, 0.6f, 0.7f),
-            new Driver("Tartu Makkinen", 0.6f, 0.7f, 0.3f, 0.5f, 0.7f, 0.7f, 0.7f, 0.6f, 0.9f),
-            new Driver("Estebano Spygato", 0.9f, 0.6f, 0.2f, 0.8f, 0.7f, 0.7f, 0.7f, 0.9f, 0.8f),
-            new Driver("James Walker", 0.3f, 0.5f, 0.65f, 0.4f, 0.7f, 0.6f, 0.7f, 0.7f, 0.7f),
-            new Driver("Dane Bigussen", 0.4f, 0.4f, 0.5f, 0.6f, 0.6f,  0.7f, 0.7f, 0.5f, 0.8f),
-            new Driver("Rico Greenberg", 0.4f, 0.5f, 0.5f, 0.7f, 0.6f, 0.7f, 0.6f, 0.6f, 0.6f),
-            new Driver("Rin Takeuchi", 0.3f, 0.3f, 0.5f, 0.6f, 0.6f, 0.6f, 0.7f, 0.5f, 0.5f),
-            new Driver("Jack du Pint", 0.3f, 0.3f, 0.4f, 0.6f, 0.6f, 0.7f, 0.6f, 0.6f, 0.5f),
-            new Driver("Jackson Captainwell", 0.15f, 0.2f, 0.6f, 0.5f, 0.5f, 0.6f, 0.5f, 0.5f, 0.6f),
-            new Driver("Damon Goataon", 0.15f, 0.3f, 0.6f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
+            new Driver("Maximum Dutch", 0.9f, 0.9f,  0.03f, 0.6f, 0.8f, 0.7f, 0.9f, 0.7f, 0.8f),
+            new Driver("Antonio Bestteammate", 0.7f, 0.04f, 0.3f, 0.7f, 0.7f, 0.8f, 0.7f, 0.7f, 0.8f),
+            new Driver("Monegasque Jemapelle", 0.8f, 0.9f, 0.05f, 0.7f, 0.7f, 0.4f, 0.8f, 0.6f, 0.8f),
+            new Driver("Sancho Junior", 0.7f, 0.8f, 0.06f, 0.6f, 0.8f, 0.8f, 0.7f, 0.9f, 0.7f),
+            new Driver("Sir Winalotton", 0.9f, 0.8f, 0.03f, 0.9f, 0.8f, 0.6f, 0.7f, 0.7f, 0.7f),
+            new Driver("Philipp S. Crowe", 0.6f, 0.8f, 0.04f, 0.7f, 0.7f, 0.8f, 0.7f, 0.6f, 0.9f),
+            new Driver("Jacque Instagrammue", 0.7f, 0.7f, 0.97f, 0.8f, 0.7f, 0.8f, 0.7f, 0.8f, 0.7f),
+            new Driver("Andre Papiermache", 0.5f, 0.7f, 0.07f, 0.6f, 0.7f, 0.8f, 0.7f, 0.7f, 0.7f),
+            new Driver("Jack Streamer", 0.68f, 0.7f, 0.05f, 0.7f, 0.7f, 0.8f, 0.8f, 0.7f, 0.9f),
+            new Driver("Bafta Pastani", 0.6f, 0.6f, 0.07f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f),
+            new Driver("Zhen Ryuki", 0.4f, 0.5f, 0.11f, 0.7f, 0.8f, 0.7f, 0.9f, 0.6f, 0.7f),
+            new Driver("Tartu Makkinen", 0.6f, 0.7f, 0.08f, 0.5f, 0.7f, 0.7f, 0.7f, 0.6f, 0.9f),
+            new Driver("Estebano Spygato", 0.9f, 0.6f, 0.05f, 0.8f, 0.7f, 0.7f, 0.7f, 0.9f, 0.8f),
+            new Driver("James Walker", 0.3f, 0.5f, 0.07f, 0.4f, 0.7f, 0.6f, 0.7f, 0.7f, 0.7f),
+            new Driver("Dane Bigussen", 0.4f, 0.4f, 0.08f, 0.6f, 0.6f,  0.7f, 0.7f, 0.5f, 0.8f),
+            new Driver("Rico Greenberg", 0.4f, 0.5f, 0.06f, 0.7f, 0.6f, 0.7f, 0.6f, 0.6f, 0.6f),
+            new Driver("Rin Takeuchi", 0.3f, 0.3f, 0.08f, 0.6f, 0.6f, 0.6f, 0.7f, 0.5f, 0.5f),
+            new Driver("Jack du Pint", 0.3f, 0.3f, 0.08f, 0.6f, 0.6f, 0.7f, 0.6f, 0.6f, 0.5f),
+            new Driver("Jackson Captainwell", 0.15f, 0.06f, 0.6f, 0.5f, 0.5f, 0.6f, 0.5f, 0.5f, 0.6f),
+            new Driver("Damon Goataon", 0.15f, 0.3f, 0.07f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
 
+        };
+
+        public Dictionary<DriverOutcome, int> Points = new Dictionary<DriverOutcome, int>() {
+
+            { DriverOutcome.First, 25 },
+            { DriverOutcome.Second, 18 },
+            { DriverOutcome.Third, 15 },
+            { DriverOutcome.Fourth, 12 },
+            { DriverOutcome.Fifth, 10 },
+            { DriverOutcome.Sixth, 8 },
+            { DriverOutcome.Seventh, 6 },
+            { DriverOutcome.Eighth, 4 },
+            { DriverOutcome.Ninth, 2 },
+            { DriverOutcome.Tenth, 1 },
+ 
         };
 
         public List<Driver> SortedDriversList { get; private set; }
@@ -198,45 +213,79 @@ namespace FIConsole
 
             DriverList.Sort(comparer);
 
-            Overtake();
+            PrettifyFinishingPlaces();
+
+            AllocatePoints();
 
         }
 
-
-        /// <summary>
-        /// Resolves cases in which one more drivers have been assigned the same finishing place.
-        /// </summary>
-        public void Overtake() 
+        public void RunChampionship()
         {
-            DriverList[0].ResultInCurrentRace = DriverOutcome.First;
+            GenerateRaces();
 
-            bool isUnique = false;
+            GenerateTeams();
 
-            while (!isUnique)
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 1; i < 19; i++)
+                if (i == 0) Console.WriteLine("This is the start of a new Formula International championship!");
+
+                Console.WriteLine($"The current race is the {RaceList[i].RaceTrack.TrackCountry} GP! It is held at {RaceList[i].RaceTrack.Name}.");
+
+                Console.WriteLine("Do you want to run this race? Type Y or y.");
+
+                char input = Console.ReadKey().KeyChar;
+
+                while (input != 'Y' && input != 'y') 
                 {
-                    if (DriverList[i].ResultInCurrentRace == DriverList[i + 1].ResultInCurrentRace)
-                    {
-
-                        int driverToPromote = random.Next(i, i + 2);
-
-                        DriverList[driverToPromote].ResultInCurrentRace = DriverList[driverToPromote].ResultInCurrentRace - 1;
-
-                        DriverComparerByPlace comparer = new DriverComparerByPlace();
-
-                        DriverList.Sort(comparer);
-
-                    }
+                    Console.WriteLine($"{Environment.NewLine}You have chosen not to run the race or have entered an invalid value. Please type Y when you are ready to race!");
+                    input = Console.ReadKey().KeyChar;
                 }
 
-                List<DriverOutcome> currentPlaces = DriverList.Select(d => d.ResultInCurrentRace).ToList();
+                if (input == 'Y' || input == 'y')
+                {
+                    
+                    Console.WriteLine(Environment.NewLine);
 
-                int uniques = currentPlaces.Distinct().Count();
+                    RunRace(RaceList[i]);
 
-                isUnique = currentPlaces.Distinct().Count() == currentPlaces.Count();
+                    Console.WriteLine(GenerateStatus());
+
+                    Console.WriteLine(Environment.NewLine);
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Makes it so that each driver has a unique finishing place in a given race.
+        /// </summary>
+        public void PrettifyFinishingPlaces()
+        {
+
+            for (int i = 0; i < 20; i++)
+            {
+                if (DriverList[i].ResultInCurrentRace != DriverOutcome.DNF && DriverList[i].ResultInCurrentRace != DriverOutcome.Twentienth)
+                {
+                    DriverList[i].ResultInCurrentRace = (DriverOutcome)i;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Allocates points after each given race.
+        /// </summary>
+        public void AllocatePoints()
+        {
+            foreach (Driver driver in DriverList)
+            {
+                if (Points.ContainsKey(driver.ResultInCurrentRace)) driver.CurrentPoints += Points[driver.ResultInCurrentRace];
             }
 
+            foreach (Team team in TeamsList)
+            {
+                team.CurrentPoints = team.RacingDrivers[0].CurrentPoints + team.RacingDrivers[1].CurrentPoints;
+            }
         }
 
         /// <summary>
@@ -249,10 +298,17 @@ namespace FIConsole
 
             foreach (Driver driver in DriverList)
             {
-                finishReports.Add($"{driver.Name} finished {driver.ResultInCurrentRace}!");
+                if (driver.ResultInCurrentRace == DriverOutcome.DNF) finishReports.Add($"{driver.Name} did not finish!");
+
+                else finishReports.Add($"{driver.Name} finished {driver.ResultInCurrentRace}!");
             }
 
             return string.Join(Environment.NewLine, finishReports);
+        }
+
+        public string GenerateChampionshipStatus()
+        {
+            throw new NotImplementedException();
         }
 
     }

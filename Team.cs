@@ -13,7 +13,9 @@ namespace FIConsole
 
         public List<Driver> RacingDrivers { get; private set; }
 
-        private float WinProbabilityTeam; 
+        public float WinProbabilityTeam { get; private set; }
+
+        public int CurrentPoints { get; set; } = 0;
 
         public Team(string name, Driver driverOne, Driver driverTwo)
         {
