@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.8.0" />
+    <PackageReference Include="OpenAI" Version="1.6.0" />
+  </ItemGroup>
+
 </Project>

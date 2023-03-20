@@ -4,6 +4,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using OpenAI_API;
+using OpenAI_API.Chat;
+using OpenAI_API.Models;
 
 namespace FIConsole
 {
@@ -296,7 +299,37 @@ namespace FIConsole
 
                     Console.WriteLine(Environment.NewLine);
 
-                    
+                    Console.WriteLine("Do you want to see a fantasy report about this race? Written by Chat GPT. Y / N");
+
+                    char gptInput = Console.ReadKey().KeyChar;
+
+                    if (gptInput == 'Y' || gptInput == 'y')
+                    {
+
+                        Console.WriteLine(Environment.NewLine);
+
+                        var chat = APIAccessor.api.Chat.CreateConversation();
+
+                        chat.AppendSystemMessage("For this conversation, you are an expert sports writer with a passionate and engaging writing style. Your area of expertise is Formula One.");
+
+                        chat.AppendUserInput($"Please write a 800-word report about a fictional F1 race. Be emotional and passionate. Denote drivers' finishing positions as P1, P2, P3, etc. Provide detailed reasons for why some drivers did not finish the race. Add drama - drivers can argue with each other, they can be friends, etc. The race in question is the {RaceList[i].RaceTrack.TrackCountry} GP. The race track is {RaceList[i].RaceTrack.Name}. The race result is {GenerateStatus()}");
+
+                        string response = chat.GetResponseFromChatbot().Result;
+
+                        Console.WriteLine(response);
+
+                        Console.WriteLine(Environment.NewLine);
+
+                    }
+
+                    else
+                    {
+                        Console.WriteLine(Environment.NewLine);
+
+                        Console.WriteLine("You have chosen not to view a detailed race report.");
+                    }
+
+
                 }
 
             }
