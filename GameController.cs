@@ -231,7 +231,7 @@ namespace FIConsole
 
                 Console.WriteLine($"Race number {(i + 1).ToString()}! The current race is the {RaceList[i].RaceTrack.TrackCountry} GP! It is held at {RaceList[i].RaceTrack.Name}.");
 
-                Console.WriteLine("Do you want to run this race? Type Y or y.");
+                Console.WriteLine("Do you want to run this race? Type Y or y");
 
                 char input = Console.ReadKey().KeyChar;
 
@@ -270,7 +270,7 @@ namespace FIConsole
 
                     char teamInput = Console.ReadKey().KeyChar;
 
-                    if (teamInput == 'Y' || input == 'y')
+                    if (teamInput == 'Y' || teamInput == 'y')
                     {
                         Console.WriteLine(Environment.NewLine);
 
@@ -286,6 +286,17 @@ namespace FIConsole
 
                         Console.WriteLine(Environment.NewLine);
                     }
+
+                    else
+                    {
+                        Console.WriteLine(Environment.NewLine);
+
+                        Console.WriteLine("You have chosen not to view team statistics for this race.");
+                    }
+
+                    Console.WriteLine(Environment.NewLine);
+
+                    
                 }
 
             }
