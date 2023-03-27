@@ -377,6 +377,8 @@ namespace FIConsole
             }
         }
 
+        public void PayoutBetS
+
         /// <summary>
         /// Generates a string outlining the basic results of the current race.
         /// </summary>

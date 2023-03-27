@@ -14,6 +14,8 @@ namespace FIConsole
 
         public int ChanceOfJoker { get; private set; }
 
+        
+
         /// <summary>
         /// Calculates the chance of something really unexpected occuring at a given race.
         /// </summary>
