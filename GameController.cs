@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -61,7 +62,7 @@ namespace FIConsole
             new Driver("Rin Takeuchi", 0.3f, 0.3f, 0.08f, 0.6f, 0.6f, 0.6f, 0.7f, 0.5f, 0.5f),
             new Driver("Jack du Pint", 0.3f, 0.3f, 0.08f, 0.6f, 0.6f, 0.7f, 0.6f, 0.6f, 0.5f),
             new Driver("Jackson Captainwell", 0.15f, 0.06f, 0.6f, 0.5f, 0.5f, 0.6f, 0.5f, 0.5f, 0.6f),
-            new Driver("Damon Goataon", 0.15f, 0.3f, 0.07f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
+            new Driver("Damon Goataon", 0.15f, 0.06f, 0.07f, 0.6f, 0.6f, 0.7f, 0.6f, 0.7f, 0.5f)
 
         };
 
@@ -202,6 +203,7 @@ namespace FIConsole
         /// <param name="race">The race to run.</param>
         public void RunRace(Race race)
         {
+
             List<int> jokerDriverIndices = IdentifyJokerDrivers(race);
 
             for (int i = 0; i < 20; i++)
@@ -233,6 +235,10 @@ namespace FIConsole
                 if (i == 0) Console.WriteLine("This is the start of a new Formula International championship!");
 
                 Console.WriteLine($"Race number {(i + 1).ToString()}! The current race is the {RaceList[i].RaceTrack.TrackCountry} GP! It is held at {RaceList[i].RaceTrack.Name}.");
+
+                Console.WriteLine(RaceList[i].GenerateWeatherStatus());
+
+                Console.WriteLine(Environment.NewLine);
 
                 Console.WriteLine("Do you want to run this race? Type Y or y");
 

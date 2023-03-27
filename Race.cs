@@ -41,6 +41,29 @@ namespace FIConsole
             }
         }
 
+        /// <summary>
+        /// Generates a status report about the weather conditions in a race.
+        /// </summary>
+        /// <returns>A string with the race weather status report.</returns>
+        public string GenerateWeatherStatus()
+        {
+            List<string> weatherStatus = new List<string>();
+
+            string precipitation = (this.RaceWeather.IsRaining) ? "Rain is forecasted for this race!" : "This race promises to be dry!";
+
+            string wind = (this.RaceWeather.IsWindy) ? "This race promises to be windy!" : "Calmn winds are forecasted for this race!";
+
+            string temperature = (this.RaceWeather.IsHot) ? "High temperatures are forecasted for this race!" : "This race promises to have moderate temperatures!";
+
+            weatherStatus.Add(precipitation);
+
+            weatherStatus.Add(wind);
+
+            weatherStatus.Add(temperature);
+
+            return string.Join(' ', weatherStatus);
+        }
+
         public Race(Track raceTrack, Weather raceWeather) 
         {
             RaceTrack = raceTrack;

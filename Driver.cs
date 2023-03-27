@@ -52,7 +52,7 @@ namespace FIConsole
 
             else
             {
-                List<float> miniJokerModifiers = CalculateMiniJoker();
+                List<float> miniJokerModifiers = CalculateMiniJoker(6);
 
                 float weatherModifierPrecipitation = (race.RaceWeather.IsRaining) ? RainModifier + miniJokerModifiers[0] : DryModifier + miniJokerModifiers[0];
 
@@ -64,7 +64,7 @@ namespace FIConsole
 
                 float finalSecondToTenthProbability = WinProbability + miniJokerModifiers[4];
 
-                float finalScore = (8.0f * WinProbability) + (9.0f * SecondToTenthProbability) + (5.0f * weatherModifierPrecipitation) + (0.5f * weatherModifierTemperature) + (0.5f * weatherModifierWind);
+                float finalScore = (8.0f * finalWinProbability) + (9.0f * finalSecondToTenthProbability) + (5.0f * weatherModifierPrecipitation) + (0.5f * weatherModifierTemperature) + (0.5f * weatherModifierWind);
 
                 int possiblePlace = 20 - (int)finalScore;
 
@@ -90,6 +90,8 @@ namespace FIConsole
 
                 int possiblePlace = 20 - (int)finalScore;
 
+
+
                 return (DriverOutcome)possiblePlace;
             }
 
@@ -99,11 +101,11 @@ namespace FIConsole
         /// Calculates some small probability that a driver is going to be a bit 'off' or 'on point' during a race.
         /// </summary>
         /// <returns></returns>
-        public List<float> CalculateMiniJoker()
+        public List<float> CalculateMiniJoker(int length)
         {
             List<float> miniJokerModifiers = new List<float>();
 
-            while (miniJokerModifiers.Count < 6)
+            while (miniJokerModifiers.Count < length)
             {
                 float modifierToAdd = (GameController.random.Next(2) == 0) ? 0.1f : -0.1f;
                 
@@ -147,6 +149,25 @@ namespace FIConsole
             float finalDnfProbability = (direction == 0) ? DnfProbability * dnfFactor : DnfProbability / dnfFactor;
 
             return finalDnfProbability; 
+        }
+
+        /// <summary>
+        /// Calculates the slightly randomized payout odds for a driver finishing in a certain position in a given race.
+        /// </summary>
+        /// <param name="race">The race to calculate the payout rates for.</param>
+        /// <param name="position">The position to calculate the payout rates for.</param>
+        /// <returns>A <c>float</c> representing the number by which </returns>
+        public float CalculatePayoutOdds(Race race, int position) 
+        {
+            List<float> payoutJokers = CalculateMiniJoker(3);
+
+            if (position == 1) return (1.0f / this.WinProbability + payoutJokers[0]);
+
+            else if (position > 1 && position <= 10) return (1.0f / this.SecondToTenthProbability + payoutJokers[1]);
+
+            else if (position > 10 && position <= 20) return (1.0f / (1 - (this.DnfProbability + Math.Clamp(payoutJokers[2], 0.01f, 0.02f))));
+
+            else return (1.0f / this.DnfProbability + Math.Clamp(payoutJokers[2], 0.01f, 0.02f));
         }
 
         public Driver(string name, float winProbability, float secondToTenthProbability, float dnfProbability, float rainModifier, float dryModifier, float windModifier, float calmModifier, float heatModifier, float coldModifier)

@@ -9,7 +9,7 @@ namespace FIConsole
     public class Player
     {
 
-        public int CurrentTickets { get; private set; }
+        public int Tickets { get; private set; } = 1000;
 
         public void Bet()
         {
