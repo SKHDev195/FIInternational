@@ -101,7 +101,7 @@ namespace FIConsole
         /// Calculates some small probability that a driver is going to be a bit 'off' or 'on point' during a race.
         /// </summary>
         /// <returns></returns>
-        public List<float> CalculateMiniJoker(int length)
+        public static List<float> CalculateMiniJoker(int length)
         {
             List<float> miniJokerModifiers = new List<float>();
 
@@ -156,8 +156,8 @@ namespace FIConsole
         /// </summary>
         /// <param name="race">The race to calculate the payout rates for.</param>
         /// <param name="position">The position to calculate the payout rates for.</param>
-        /// <returns>A <c>float</c> representing the number by which </returns>
-        public float CalculatePayoutOdds(Race race, int position) 
+        /// <returns>A <c>float</c> representing the number by which the bid amount has to be multiplied in case of a win.</returns>
+        public float CalculatePayoutOddsDriver(Race race, int position) 
         {
             List<float> payoutJokers = CalculateMiniJoker(3);
 
